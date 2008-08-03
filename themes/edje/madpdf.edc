@@ -1,0 +1,33 @@
+#define DEFAULT_FONT_SIZE 16
+#define DEFAULT_MEDIUM_FONT_SIZE 14
+#define DEFAULT_FONT "ewl/default"
+#define DEFAULT_BOLD_FONT "ewl/default/bold"
+
+fonts 
+{
+	font, "fonts/DejaVuSerif.ttf" "ewl/default";
+	font, "fonts/DejaVuSerif-Bold.ttf" "ewl/default/bold";
+}
+collections
+{	
+#include "groups/blank.edc"
+#include "groups/dlg_optionbox.edc"
+#include "groups/dlg_label.edc"
+}
+
+data 
+{
+	/* A blank group to be used if you want to remove a theme */
+	item: "/blank/group" "ewl/blank";
+
+	/* scroll groups */
+	item: "/scrollpane/group" "ewl/blank";
+
+	/* theme information */
+	item: "/theme/author" "Marc Lajoie (Openinkpot Project)";
+	item: "/theme/font_path" "fonts";
+	item: "/theme/license" "GPL";
+	item: "/theme/name" "oi_madpdf";
+	
+}
+

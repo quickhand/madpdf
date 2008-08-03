@@ -1,0 +1,507 @@
+images
+{
+	image: "newborder0.png" COMP;
+	image: "newborder1.png" COMP;
+	image: "newborder2.png" COMP;
+	image: "newborder3.png" COMP;
+	image: "newborder4.png" COMP;
+	image: "newborder5.png" COMP;
+	image: "newborder6.png" COMP;
+	image: "newborder7.png" COMP;
+}
+group
+{
+	name: "ewl/box/oi_bookbox1";
+	min: 1 64;
+	max: 99999 64;
+	parts
+	{
+		part
+		{
+			name: "mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "divider";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 1.0;
+					offset: 0 -64;
+				}
+				rel2
+				{
+					relative: 0.0 1.0;
+					offset: 96 0;
+				}
+				image
+				{
+					normal: "newborder0.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/box/oi_bookbox2";
+	min: 1 64;
+	max: 99999 64;	
+	parts
+	{
+		part
+		{
+			name: "mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "divider";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 1.0;
+					offset: 0 -64;
+				}
+				rel2
+				{
+					relative: 0.0 1.0;
+					offset: 96 0;
+				}
+				image
+				{
+					normal: "newborder1.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/box/oi_bookbox3";
+	min: 1 64;
+	max: 99999 64;	
+	parts
+	{
+		part
+		{
+			name: "mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "divider";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 1.0;
+					offset: 0 -64;
+				}
+				rel2
+				{
+					relative: 0.0 1.0;
+					offset: 96 0;
+				}
+				image
+				{
+					normal: "newborder2.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/box/oi_bookbox4";
+	min: 1 64;
+	max: 99999 64;	
+	parts
+	{
+		part
+		{
+			name: "mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "divider";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 1.0;
+					offset: 0 -64;
+				}
+				rel2
+				{
+					relative: 0.0 1.0;
+					offset: 96 0;
+				}
+				image
+				{
+					normal: "newborder3.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/box/oi_bookbox5";
+	min: 1 64;
+	max: 99999 64;
+	parts
+	{
+		part
+		{
+			name: "mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "divider";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 1.0;
+					offset: 0 -64;
+				}
+				rel2
+				{
+					relative: 0.0 1.0;
+					offset: 96 0;
+				}
+				image
+				{
+					normal: "newborder4.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/box/oi_bookbox6";
+	min: 1 64;
+	max: 99999 64;
+	parts
+	{
+		part
+		{
+			name: "mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "divider";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 1.0;
+					offset: 0 -64;
+				}
+				rel2
+				{
+					relative: 0.0 1.0;
+					offset: 96 0;
+				}
+				image
+				{
+					normal: "newborder5.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/box/oi_bookbox7";
+	min: 1 64;
+	max: 99999 64;
+	parts
+	{
+		part
+		{
+			name: "mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "divider";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 1.0;
+					offset: 0 -64;
+				}
+				rel2
+				{
+					relative: 0.0 1.0;
+					offset: 96 0;
+				}
+				image
+				{
+					normal: "newborder6.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/box/oi_bookbox8";
+	min: 1 64;
+	max: 99999 64;
+	parts
+	{
+		part
+		{
+			name: "mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "divider";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 1.0;
+					offset: 0 -64;
+				}
+				rel2
+				{
+					relative: 0.0 1.0;
+					offset: 96 0;
+				}
+				image
+				{
+					normal: "newborder7.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}

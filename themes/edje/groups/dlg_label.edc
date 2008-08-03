@@ -1,0 +1,69 @@
+group
+{
+	name: "ewl/label/dlg_label";
+	
+	parts
+	{
+		part
+		{
+			name: "ewl/label/dlg_label/text";
+			type: TEXT;
+			effect: SOFT_SHADOW;
+			description
+			{
+				state: "default" 0.0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+				text
+				{
+					font: DEFAULT_FONT;
+					size: DEFAULT_FONT_SIZE;
+                    			min: 1 1;
+					align: 0.0 0.5;
+				}
+				color: 0 0 0 255;
+				color3: 255 255 255 32;
+			}
+			description
+			{
+				state: "selected" 0.0;
+				inherit: "default" 0.0;
+				color: 255 255 255 255;
+				color3: 0 0 0 32;
+
+			}
+		}
+		
+
+		
+	}
+	programs
+	{
+		program
+		{
+			name: "enable";
+			signal: "enabled";
+			source: "EWL";
+			action: STATE_SET "selected" 0.0;
+			target: "ewl/label/dlg_label/text"; 
+		}
+		program
+		{
+			name: "disable";
+			signal: "disabled";
+			source: "EWL";
+			action: STATE_SET "default" 0.0;
+			target: "ewl/label/dlg_label/text"; 
+		}
+	}
+}
+

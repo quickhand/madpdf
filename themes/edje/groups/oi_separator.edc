@@ -1,0 +1,44 @@
+images
+{
+	image: "oi_separator.png" COMP;
+}
+
+group
+{
+	name: "ewl/oi_separator";
+	min: 6 10;
+	max: 10000 6;
+
+	parts
+	{
+		part
+		{
+			name: "separator";
+			mouse_events: 0;
+			description
+			{
+				state: "default" 0.0;
+				min: 20 1;
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 100 5;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: -3 -5;
+				}
+				image
+				{
+					normal: "oi_separator.png";
+					border: 3 3 0 0;
+				}
+				fill
+				{
+					smooth: 0;
+				}
+			}
+		}
+	}
+}

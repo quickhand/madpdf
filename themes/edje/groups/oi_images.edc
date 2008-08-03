@@ -1,0 +1,308 @@
+images
+{
+	image: "book.png" COMP;
+	image: "forwardarr.png" COMP;
+	image: "backarr.png" COMP;
+	image: "folder.png" COMP;
+	image: "default.png" COMP;
+}
+group
+{
+	name: "ewl/oi_image/backarr";
+	parts
+	{
+		part
+		{
+			name: "mainrect";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "mainimage";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+				image
+				{
+					normal: "backarr.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/oi_image/forwardarr";
+	parts
+	{
+		part
+		{
+			name: "mainrect";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "mainimage";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+				image
+				{
+					normal: "forwardarr.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/oi_image/book";
+	parts
+	{
+		part
+		{
+			name: "mainrect";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "mainimage";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+				image
+				{
+					normal: "book.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/oi_image/folder";
+	parts
+	{
+		part
+		{
+			name: "mainrect";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "mainimage";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+				image
+				{
+					normal: "folder.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
+group
+{
+	name: "ewl/oi_image/default";
+	parts
+	{
+		part
+		{
+			name: "mainrect";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 255 255 255 0;
+
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "mainimage";
+			type: IMAGE;
+		
+			
+			description
+			{
+				state: "default" 0.0;
+		
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+				image
+				{
+					normal: "default.png";
+	
+				}
+			}
+
+		}
+		
+	}
+
+}
