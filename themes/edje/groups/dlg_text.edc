@@ -1,0 +1,154 @@
+images
+{
+	image: "entry.png" COMP;
+	image: "focus.png" COMP;
+	image: "entry_disabled.png" COMP;
+}
+
+group
+{
+	name: "ewl/dlg_entry";
+	min: 18 25;
+	max: 80 999999;
+	data
+	{
+		item: "inset" 2;
+		item: "inset/left" 4;
+	}
+
+	parts 
+	{
+		part 
+		{
+			name: "border";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+				color: 0 0 0 255;
+			}
+			
+		}
+		part
+		{
+			name: "inside";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 2 2;
+
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: -2 -2;
+				}
+				color: 120 120 120 255;
+			}
+			description
+			{
+				state: "active" 0.0;
+				inherit: "default" 0.0;
+				color: 255 255 255 255;
+			}
+		}
+		
+	}
+	programs
+	{
+		program
+		{
+			name: "disable";
+			signal: "disabled";
+			source: "*";
+			action: STATE_SET "default" 0.0;
+			target: "inside";
+		}
+		program
+		{
+			name: "focus,in";
+			signal: "focus,in";
+			source: "*";
+			action: STATE_SET "active" 0.0;
+			target: "inside";
+		}
+		program
+		{
+			name: "focus,out";
+			signal: "focus,out";
+			source: "*";
+			action: STATE_SET "default" 0.0;
+			target: "inside";
+		}
+	}
+}
+
+group
+{
+	name: "ewl/dlg_entry/cursor";
+	min: 1 8;
+	max: 1 10000;
+
+	data
+	{
+		item: "pad" 0;
+		item: "pad/top" 2;
+		item: "pad/bottom" 2;
+	}
+
+	parts
+	{
+		part
+		{
+			name, "cursor";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 120 120 120 255;
+				visible: 1;
+			}
+
+		}
+	}
+}
+
+group
+{
+	name: "ewl/dlg_entry/selection";
+	data
+	{
+		item: "pad/top" 2;
+		item: "pad/bottom" 0;
+	}
+	
+	parts
+	{
+		part
+		{
+			name: "selection";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 120 120 120 125;
+			}
+		}
+	}
+}
+

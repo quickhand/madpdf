@@ -28,7 +28,7 @@ group
 				{
 					font: DEFAULT_FONT;
 					size: DEFAULT_FONT_SIZE;
-                    min: 0 1;
+                    			min: 1 1;
 					align: 0.5 0.5;
 				}
 				color: 0 0 0 255;
@@ -36,9 +36,19 @@ group
 			}
 
 		}
+		
+	}
+}
+
+group
+{
+	name: "ewl/oi_statbar_label_left";
+    	
+	parts
+	{
 		part
 		{
-			name: "ewl/oi_label/sorttext";
+			name: "ewl/oi_statbar_label_left/text";
 			type: TEXT;
 			effect: SOFT_SHADOW;
 
@@ -59,87 +69,31 @@ group
 				text
 				{
 					font: DEFAULT_FONT;
-					size: DEFAULT_MEDIUM_FONT_SIZE;
-					align: 0.5 0.5;
-                    min: 0 1; 
-                   
-				}
-				color: 80 80 80 255;
-				color3: 255 255 255 32;
-			}
-
-		}
-		part
-		{
-			name: "ewl/oi_label/authortext";
-			type: TEXT;
-			effect: SOFT_SHADOW;
- 
-			description
-			{
-				state: "default" 0.0;
-
-				rel1
-				{
-					relative: 0.0 0.0;
-					offset: 0 0;
-				}
-				rel2
-				{
-					relative: 1.0 1.0;
-					offset: 0 0;
-				}
-				text
-				{
-					font: DEFAULT_BOLD_FONT;
-					size: DEFAULT_MEDIUM_FONT_SIZE;
-					align: 0.0 0.0;
-                    min: 0 1;
-
-				}
-				color: 80 80 80 255;
-				color3: 255 255 255 32;
-			}
-
-		}
-		part
-		{
-			name: "ewl/oi_label/titletext";
-			type: TEXT;
-			effect: SOFT_SHADOW;
-
-			description
-			{
-				state: "default" 0.0;
-				rel1
-				{
-					relative: 0.0 0.0;
-					offset: 0 0;
-				}
-				rel2
-				{
-					relative: 1.0 1.0;
-					offset: 0 0;
-				}
-				text
-				{
-					font: DEFAULT_BOLD_FONT;
-					size: DEFAULT_FONT_SIZE;
-					align: 0.0 0.0;
-                    			min: 0 1; 
-                    
+					size: DEFAULT_SMALL_FONT_SIZE;
+                    			min: 1 1;
+					align: 0.0 0.5;
 				}
 				color: 0 0 0 255;
 				color3: 255 255 255 32;
 			}
 
 		}
+		
+	}
+}
+
+group
+{
+	name: "ewl/oi_statbar_label_right";
+    	
+	parts
+	{
 		part
 		{
-			name: "ewl/oi_label/infotext";
+			name: "ewl/oi_statbar_label_right/text";
 			type: TEXT;
 			effect: SOFT_SHADOW;
-            
+
 			description
 			{
 				state: "default" 0.0;
@@ -156,20 +110,17 @@ group
 				}
 				text
 				{
-					font: DEFAULT_BOLD_FONT;
-					size: DEFAULT_MEDIUM_FONT_SIZE;
-					align: 1.0 1.0;
-                    min: 0 1;  
-
+					font: DEFAULT_FONT;
+					size: DEFAULT_SMALL_FONT_SIZE;
+                    			min: 1 1;
+					align: 1.0 0.5;
 				}
-				color: 80 80 80 255;
+				color: 0 0 0 255;
 				color3: 255 255 255 32;
 			}
 
 		}
+		
 	}
 }
-
-
-
 

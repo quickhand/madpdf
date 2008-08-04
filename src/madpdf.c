@@ -33,6 +33,8 @@
 #include "settings.h"
 #include "opt_dlg.h"
 
+#define DEFAULT_THEME "/usr/share/madpdf/madpdf.edj"
+
 Ewl_Widget *win = NULL;
 Ewl_Widget *pdfwidget = NULL;
 Ewl_Widget *scrollpane = NULL;
@@ -46,7 +48,7 @@ Ewl_Widget *goto_entry;
 double curscale=1.0;
 //double moveinc=0.1;
 //for later, margin cuttoffs
-int trimflag=0;
+int fitmode=0;
 double leftmarge=0;
 double rightmarge=0;
 
@@ -200,9 +202,9 @@ void resize_and_rescale(double scale)
         
     //ewl_pdf_size_get(EWL_PDF(pdfwidget),&docwidth,&docheight);
     epdf_page_size_get (EWL_PDF(pdfwidget)->pdf_page,&docwidth,&docheight);
-    if(!trimflag)
+    if(fitmode==0)
         docscale=((double)sp_inner)/((double)docwidth)*scale;
-    else
+    else if(fitmode==1)
     {
         ltrimpct=((double)get_settings()->ltrimpad)/((double)docwidth);
         rtrimpct=((double)get_settings()->rtrimpad)/((double)docwidth);
@@ -229,9 +231,9 @@ void resize_and_rescale(double scale)
     //ewl_object_place(EWL_OBJECT(pdfwidget),0,0,floor(((double)docwidth)*docscale),floor(((double)docheight)*docscale));
     ewl_widget_configure(trimpane);
     ewl_widget_configure(scrollpane);
-    if(!trimflag)
+    if(fitmode==0)
         ewl_scrollpane_hscrollbar_value_set(EWL_SCROLLPANE(trimpane),0.0);
-    else
+    else if(fitmode==1)
         ewl_scrollpane_hscrollbar_value_set(EWL_SCROLLPANE(trimpane),(leftmarge-ltrimpct)/(leftmarge-ltrimpct+rightmarge-rtrimpct));
 }
 void update_statusbar()
@@ -343,10 +345,10 @@ void cb_key_down(Ewl_Widget *w, void *ev, void *data)
         update_statusbar();
         break;
     case 5:
-        if(!trimflag)
-            trimflag=1;
-        else
-            trimflag=0;
+        if(fitmode==0)
+            fitmode=1;
+        else if(fitmode==1)
+            fitmode=0;
         calculate_margins();
         resize_and_rescale(curscale);
         break;
@@ -469,6 +471,7 @@ int main ( int argc, char ** argv )
 
     //setlocale(LC_ALL, "");
     //textdomain("elementpdf");
+    ewl_theme_theme_set(DEFAULT_THEME);
     
     homedir=getenv("HOME");
     configfile=(char *)calloc(strlen(homedir)+21 + 1, sizeof(char));
@@ -508,7 +511,7 @@ int main ( int argc, char ** argv )
     ewl_scrollpane_hscrollbar_flag_set(EWL_SCROLLPANE(scrollpane),EWL_SCROLLPANE_FLAG_ALWAYS_HIDDEN);
     ewl_scrollpane_vscrollbar_flag_set(EWL_SCROLLPANE(scrollpane),EWL_SCROLLPANE_FLAG_ALWAYS_HIDDEN);
     //ewl_object_fill_policy_set(EWL_OBJECT(scrollpane), EWL_FLAG_FILL_FILL);
-    ewl_theme_data_str_set(EWL_WIDGET(scrollpane),"/scrollpane/group","ewl/blank");
+    //ewl_theme_data_str_set(EWL_WIDGET(scrollpane),"/scrollpane/group","ewl/blank");
     ewl_widget_show(scrollpane);
     
     trimpane=ewl_scrollpane_new();
@@ -516,19 +519,29 @@ int main ( int argc, char ** argv )
     ewl_object_alignment_set(EWL_OBJECT(trimpane),EWL_FLAG_ALIGN_LEFT|EWL_FLAG_ALIGN_TOP);
     ewl_scrollpane_hscrollbar_flag_set(EWL_SCROLLPANE(trimpane),EWL_SCROLLPANE_FLAG_ALWAYS_HIDDEN);
     ewl_scrollpane_vscrollbar_flag_set(EWL_SCROLLPANE(trimpane),EWL_SCROLLPANE_FLAG_ALWAYS_HIDDEN);
-    ewl_theme_data_str_set(EWL_WIDGET(trimpane),"/scrollpane/group","ewl/blank");
+    //ewl_theme_data_str_set(EWL_WIDGET(trimpane),"/scrollpane/group","ewl/blank");
     ewl_widget_show(trimpane);
     
-    statbar=ewl_statusbar_new();
+    statbar=ewl_hbox_new();
     ewl_container_child_append(EWL_CONTAINER(vbox),statbar);
+    ewl_theme_data_str_set(EWL_WIDGET(statbar),"/hbox/group","ewl/menu/oi_menu");
+    ewl_object_fill_policy_set(EWL_OBJECT(statbar),EWL_FLAG_FILL_HFILL|EWL_FLAG_FILL_VSHRINKABLE);
     ewl_widget_show(statbar);
     
     statlabel1=ewl_label_new();   
-    ewl_statusbar_left_append(EWL_STATUSBAR(statbar),statlabel1);
+    //ewl_statusbar_left_append(EWL_STATUSBAR(statbar),statlabel1);
+    ewl_container_child_append(EWL_CONTAINER(statbar),statlabel1);
+    ewl_theme_data_str_set(EWL_WIDGET(statlabel1),"/label/group","ewl/oi_statbar_label_left");
+    ewl_theme_data_str_set(EWL_WIDGET(statlabel1),"/label/textpart","ewl/oi_statbar_label_left/text");
+    ewl_object_fill_policy_set(EWL_OBJECT(statlabel1),EWL_FLAG_FILL_HSHRINKABLE);
     ewl_widget_show(statlabel1);
     
     statlabel2=ewl_label_new();   
-    ewl_statusbar_right_append(EWL_STATUSBAR(statbar),statlabel2);
+    //ewl_statusbar_right_append(EWL_STATUSBAR(statbar),statlabel2);
+    ewl_container_child_append(EWL_CONTAINER(statbar),statlabel2);
+    ewl_theme_data_str_set(EWL_WIDGET(statlabel2),"/label/group","ewl/oi_statbar_label_right");
+    ewl_theme_data_str_set(EWL_WIDGET(statlabel2),"/label/textpart","ewl/oi_statbar_label_right/text");
+    ewl_object_fill_policy_set(EWL_OBJECT(statlabel2),EWL_FLAG_FILL_HFILL);
     ewl_widget_show(statlabel2);
     
     
@@ -544,6 +557,7 @@ int main ( int argc, char ** argv )
     menu=ewl_context_menu_new();
     
     ewl_callback_append(menu, EWL_CALLBACK_KEY_DOWN, cb_menu_key_down, NULL);
+    ewl_theme_data_str_set(EWL_WIDGET(menu),"/menu/group","ewl/menu/oi_menu");
     ewl_context_menu_attach(EWL_CONTEXT_MENU(menu), statbar);
     
     Ewl_Widget *temp=ewl_menu_new();

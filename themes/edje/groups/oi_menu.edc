@@ -6,7 +6,6 @@ images
 group
 {
 	name: "ewl/menu/oi_menu";
-
 	parts
 	{
 		part
@@ -31,6 +30,7 @@ group
 				color: 200 200 200 255;
 			}
 		}
+
         
 	}
 		

@@ -1,5 +1,6 @@
 #define DEFAULT_FONT_SIZE 16
 #define DEFAULT_MEDIUM_FONT_SIZE 14
+#define DEFAULT_SMALL_FONT_SIZE 12
 #define DEFAULT_FONT "ewl/default"
 #define DEFAULT_BOLD_FONT "ewl/default/bold"
 
@@ -13,6 +14,11 @@ collections
 #include "groups/blank.edc"
 #include "groups/dlg_optionbox.edc"
 #include "groups/dlg_label.edc"
+#include "groups/oi_menu.edc"
+#include "groups/oi_window.edc"
+#include "groups/oi_label.edc"
+#include "groups/oi_text.edc"
+#include "groups/dlg_text.edc"
 }
 
 data 
@@ -22,6 +28,43 @@ data
 
 	/* scroll groups */
 	item: "/scrollpane/group" "ewl/blank";
+
+	/* menu groups
+	item: "/menu/group" "ewl/menu/oi_menu";
+	item: "/menu_item/body/label/group" "ewl/menu/oi_item";
+	item: "/menu_item/body/label/textpart" "ewl/menu/oi_item/text";
+	item: "/menu/vbox/menu_container/body/label/group" "ewl/menu/oi_subitem";
+	item: "/menu/vbox/menu_container/body/label/textpart" "ewl/menu/oi_subitem/text";
+
+	item: "/window/vbox/statusbar/group" "ewl/menu/oi_menu";
+	item: "/window/vbox/statusbar/hbox/label/group" "ewl/oi_label";
+	item: "/window/vbox/statusbar/hbox/label/textpart" "ewl/oi_label/text";
+
+	/* entry/text related groups */
+	item: "/entry/group" "ewl/entry";
+	item: "/entry/cursor/group" "ewl/entry/cursor";
+	item: "/selection_area/group" "ewl/entry/selection";
+
+	/* window related groups */
+	item: "/window/group" "ewl/oi_window";
+
+	/* label groups */
+	item: "/label/group" "ewl/oi_label";
+	item: "/label/textpart" "ewl/oi_label/text";
+
+	/* default values */
+	item: "/entry/color/a" 255;
+	item: "/entry/font" DEFAULT_FONT;
+	item: "/entry/font_size" DEFAULT_MEDIUM_FONT_SIZE;
+
+	item: "/context_menu/voffset" 1;
+	item: "/context_menu/hoffset" 1;
+
+	item: "/text/color/a" 255;
+	item: "/text/font" DEFAULT_FONT;
+	item: "/text/font_size" DEFAULT_MEDIUM_FONT_SIZE;
+	item: "/text/style" "none";
+
 
 	/* theme information */
 	item: "/theme/author" "Marc Lajoie (Openinkpot Project)";

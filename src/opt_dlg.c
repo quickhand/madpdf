@@ -111,6 +111,7 @@ void cb_dialog_key_down(Ewl_Widget *w, void *ev, void *data)
                 int endind=ecore_dlist_index(EWL_EMBED(dialogwidget)->tab_order);
                 if(endind<startind)
                     disable_optionboxes();
+
             }
             else
             {
@@ -159,7 +160,7 @@ void opt_dlg_init()
     
     Ewl_Widget *dlg_hbox1=ewl_hbox_new();
     ewl_container_child_append(EWL_CONTAINER(dlg_vbox),dlg_hbox1);
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox1),"/hbox/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox1),"/hbox/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox1),"/hbox/group","ewl/box/dlg_optionbox");
     ewl_widget_focusable_set(dlg_hbox1,1);
     //ewl_widget_appearance_part_text_set(dlg_hbox1,"ewl/box/dlg_optionbox/text","1.");
@@ -169,7 +170,7 @@ void opt_dlg_init()
     ewl_widget_show(dlg_hbox1);
     
     Ewl_Widget *dlg_btn_label1=ewl_label_new();
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label1),"/label/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label1),"/label/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label1),"/label/group","ewl/label/dlg_label");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label1),"/label/textpart","ewl/label/dlg_label/text");
     ewl_container_child_append(EWL_CONTAINER(dlg_hbox1),dlg_btn_label1);
@@ -179,7 +180,7 @@ void opt_dlg_init()
     ewl_widget_show(dlg_btn_label1);
     
     Ewl_Widget *dlg_entry1_label=ewl_label_new();
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1_label),"/label/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1_label),"/label/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1_label),"/label/group","ewl/label/dlg_label");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1_label),"/label/textpart","ewl/label/dlg_label/text");
     ewl_container_child_append(EWL_CONTAINER(dlg_hbox1),dlg_entry1_label);
@@ -191,12 +192,15 @@ void opt_dlg_init()
     ewl_callback_append(dlg_entry1, EWL_CALLBACK_FOCUS_IN,cb_dialog_entrybox_focused,NULL);
     sprintf(tempo,"%d",get_settings()->hpan);
     ewl_text_text_set(EWL_TEXT(dlg_entry1),tempo);
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1),"/entry/group","ewl/dlg_entry");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1),"/entry/cursor/group","ewl/dlg_entry/cursor");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1),"/entry/selection_area/group","ewl/dlg_entry/selection");
     //ewl_object_fill_policy_set(EWL_OBJECT(dlg_entry1),EWL_FLAG_FILL_HSHRINKABLE);
     ewl_widget_name_set(dlg_entry1,"dlg_p1_hb1_entry1");
     ewl_widget_show(dlg_entry1);
     
     Ewl_Widget *dlg_entry2_label=ewl_label_new();
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2_label),"/label/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2_label),"/label/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2_label),"/label/group","ewl/label/dlg_label");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2_label),"/label/textpart","ewl/label/dlg_label/text");
     ewl_container_child_append(EWL_CONTAINER(dlg_hbox1),dlg_entry2_label);
@@ -209,19 +213,22 @@ void opt_dlg_init()
     //ewl_object_fill_policy_set(EWL_OBJECT(dlg_entry1),EWL_FLAG_FILL_HSHRINKABLE);
     sprintf(tempo,"%d",get_settings()->vpan);
     ewl_text_text_set(EWL_TEXT(dlg_entry2),tempo);
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2),"/entry/group","ewl/dlg_entry");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2),"/entry/cursor/group","ewl/dlg_entry/cursor");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2),"/entry/selection_area/group","ewl/dlg_entry/selection");
     ewl_widget_name_set(dlg_entry2,"dlg_p1_hb1_entry2");
     ewl_widget_show(dlg_entry2);
     
     Ewl_Widget *dlg_hbox2=ewl_hbox_new();
     ewl_container_child_append(EWL_CONTAINER(dlg_vbox),dlg_hbox2);
     ewl_widget_focusable_set(dlg_hbox2,1);
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox2),"/hbox/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox2),"/hbox/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox2),"/hbox/group","ewl/box/dlg_optionbox");
     ewl_widget_name_set(dlg_hbox2,"dlg_p1_hb2");
     ewl_widget_show(dlg_hbox2);
     
     Ewl_Widget *dlg_btn_label2=ewl_label_new();
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label2),"/label/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label2),"/label/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label2),"/label/group","ewl/label/dlg_label");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label2),"/label/textpart","ewl/label/dlg_label/text");
     ewl_container_child_append(EWL_CONTAINER(dlg_hbox2),dlg_btn_label2);
@@ -233,6 +240,9 @@ void opt_dlg_init()
     ewl_callback_append(dlg_entry3, EWL_CALLBACK_FOCUS_IN,cb_dialog_entrybox_focused,NULL);
     sprintf(tempo,"%d",get_settings()->zoominc);
     ewl_text_text_set(EWL_TEXT(dlg_entry3),tempo);
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry3),"/entry/group","ewl/dlg_entry");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry3),"/entry/cursor/group","ewl/dlg_entry/cursor");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry3),"/entry/selection_area/group","ewl/dlg_entry/selection");
     ewl_widget_name_set(dlg_entry3,"dlg_p1_hb2_entry1");
     ewl_widget_show(dlg_entry3);
     
@@ -242,7 +252,7 @@ void opt_dlg_init()
     ewl_container_child_append(EWL_CONTAINER(dlg_vbox),dlg_hbox3);
     ewl_widget_focusable_set(dlg_hbox3,1);
     //ewl_object_custom_h_set(EWL_OBJECT(dlg_hbox3),50);
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox3),"/hbox/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox3),"/hbox/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox3),"/hbox/group","ewl/box/dlg_optionbox");
     //ewl_widget_appearance_part_text_set(dlg_hbox3,"ewl/box/dlg_optionbox/text","3.");
     ewl_widget_name_set(dlg_hbox3,"dlg_p1_hb3");
@@ -250,7 +260,7 @@ void opt_dlg_init()
     ewl_widget_show(dlg_hbox3);
     
     Ewl_Widget *dlg_btn_label3=ewl_label_new();
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label3),"/label/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label3),"/label/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label3),"/label/group","ewl/label/dlg_label");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label3),"/label/textpart","ewl/label/dlg_label/text");
     ewl_container_child_append(EWL_CONTAINER(dlg_hbox3),dlg_btn_label3);
@@ -258,7 +268,7 @@ void opt_dlg_init()
     ewl_widget_show(dlg_btn_label3);
     
     Ewl_Widget *dlg_entry4_label=ewl_label_new();
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4_label),"/label/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4_label),"/label/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4_label),"/label/group","ewl/label/dlg_label");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4_label),"/label/textpart","ewl/label/dlg_label/text");
     ewl_container_child_append(EWL_CONTAINER(dlg_hbox3),dlg_entry4_label);
@@ -270,11 +280,14 @@ void opt_dlg_init()
     ewl_callback_append(dlg_entry4, EWL_CALLBACK_FOCUS_IN,cb_dialog_entrybox_focused,NULL);
     sprintf(tempo,"%d",get_settings()->ltrimpad);
     ewl_text_text_set(EWL_TEXT(dlg_entry4),tempo);
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4),"/entry/group","ewl/dlg_entry");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4),"/entry/cursor/group","ewl/dlg_entry/cursor");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4),"/entry/selection_area/group","ewl/dlg_entry/selection");
     ewl_widget_name_set(dlg_entry4,"dlg_p1_hb3_entry1");
     ewl_widget_show(dlg_entry4);
     
     Ewl_Widget *dlg_entry5_label=ewl_label_new();
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5_label),"/label/file","/usr/share/madpdf/madpdf.edj");
+    //ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5_label),"/label/file","/usr/share/madpdf/madpdf.edj");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5_label),"/label/group","ewl/label/dlg_label");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5_label),"/label/textpart","ewl/label/dlg_label/text");
     ewl_container_child_append(EWL_CONTAINER(dlg_hbox3),dlg_entry5_label);
@@ -287,6 +300,9 @@ void opt_dlg_init()
     //ewl_object_fill_policy_set(EWL_OBJECT(dlg_entry5),EWL_FLAG_FILL_HSHRINKABLE);
     sprintf(tempo,"%d",get_settings()->rtrimpad);
     ewl_text_text_set(EWL_TEXT(dlg_entry5),tempo);
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5),"/entry/group","ewl/dlg_entry");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5),"/entry/cursor/group","ewl/dlg_entry/cursor");
+    ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5),"/entry/selection_area/group","ewl/dlg_entry/selection");
     ewl_widget_name_set(dlg_entry5,"dlg_p1_hb3_entry2");
     ewl_widget_show(dlg_entry5);
 }
