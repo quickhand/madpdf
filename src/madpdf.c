@@ -24,6 +24,7 @@
 #endif
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <math.h>
 #include <sys/stat.h>
 #include <Ewl.h>
@@ -32,8 +33,6 @@
 #include "madpdf.h"
 #include "settings.h"
 #include "opt_dlg.h"
-
-#define DEFAULT_THEME "/usr/share/madpdf/madpdf.edj"
 
 Ewl_Widget *win = NULL;
 Ewl_Widget *pdfwidget = NULL;
@@ -52,6 +51,22 @@ int fitmode=0;
 double leftmarge=0;
 double rightmarge=0;
 
+
+/* Returns edje theme file name (pointer to static buffer). */
+const char* get_theme_file()
+{
+    static const char system_theme[] = "/usr/share/madpdf/madpdf.edj";
+    static const char rel_theme[] = "./themes/edje/madpdf.edj";
+
+    if(0 == access(rel_theme, R_OK))
+        return rel_theme;
+
+    if(0 == access(system_theme, R_OK))
+        return system_theme;
+
+    fprintf(stderr, "Unable to find any theme. Silly me.\n");
+    exit(1);
+}
 
 double get_horizontal_pan_inc()
 {
@@ -471,7 +486,7 @@ int main ( int argc, char ** argv )
 
     //setlocale(LC_ALL, "");
     //textdomain("elementpdf");
-    ewl_theme_theme_set(DEFAULT_THEME);
+    ewl_theme_theme_set(get_theme_file());
     
     homedir=getenv("HOME");
     configfile=(char *)calloc(strlen(homedir)+21 + 1, sizeof(char));
@@ -589,3 +604,4 @@ int main ( int argc, char ** argv )
     return 0;
 }
 
+// vim:set ts=4 sw=4 et:
