@@ -26,6 +26,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <math.h>
+#include <string.h>
+#include <ctype.h>
 #include <sys/stat.h>
 #include <Ewl.h>
 #include <Epdf.h>
