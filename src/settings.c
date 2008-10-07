@@ -175,7 +175,7 @@ void load_settings(const char *filename)
     
     
     filehandle=open(filename,O_RDONLY);
-    if(!filehandle)
+    if(filehandle == -1)
         return;
     stat(filename,&stat_p);
     buffer=(char *)malloc(stat_p.st_size);
