@@ -175,8 +175,11 @@ void load_settings(const char *filename)
     
     
     filehandle=open(filename,O_RDONLY);
-    if(filehandle == -1)
+    if(filehandle == -1) {
+        XML_ParserFree(myparse);
         return;
+    }
+
     stat(filename,&stat_p);
     buffer=(char *)malloc(stat_p.st_size);
     nread=read(filehandle,(void *)buffer,stat_p.st_size);
@@ -212,3 +215,4 @@ static void free_parsinginfo()
 
 }
 
+/* vim:set et sw=4: */
