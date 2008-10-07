@@ -22,9 +22,10 @@ typedef struct
 } parsenav;
 
 
-progsettings *settings=NULL;
-parsenav *parsinginfo=NULL;
+static progsettings *settings=NULL;
+static parsenav *parsinginfo=NULL;
 
+static void free_parsinginfo();
 
 void save_settings(const char *filename)
 {
@@ -200,7 +201,8 @@ void free_settings()
     }
 
 }
-void free_parsinginfo()
+
+static void free_parsinginfo()
 {
     if(parsinginfo!=NULL)
     {
