@@ -7,7 +7,7 @@
 
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
-const Ewl_Widget *dialogwidget=NULL;
+static Ewl_Widget *dialogwidget=NULL;
 int selectedflag=0;
 
 
