@@ -32,10 +32,6 @@ const Ewl_Widget *opt_dlg_widget_get()
 {
     return dialogwidget;
 }
-void cb_dialog_revealed(Ewl_Widget *w, void *ev, void *data)
-{
-    disable_optionboxes();
-}
 void cb_dialog_entrybox_focused(Ewl_Widget *w, void *ev, void *data)
 {
     ewl_text_all_select(EWL_TEXT(w));
@@ -60,6 +56,12 @@ void disable_optionboxes()
     selectedflag=0;    
    
 }
+
+static void cb_dialog_revealed(Ewl_Widget *w, void *ev, void *data)
+{
+    disable_optionboxes();
+}
+
 void cb_dialog_key_down(Ewl_Widget *w, void *ev, void *data)
 {
     Ewl_Widget *curwidget;
