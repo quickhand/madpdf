@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <Ewl.h>
 #include "opt_dlg.h"
 #include "settings.h"
 #include "madpdf.h"
@@ -28,7 +29,7 @@ void commit_settings()
     
 }
 
-const Ewl_Widget *opt_dlg_widget_get()
+Ewl_Widget *opt_dlg_widget_get()
 {
     return dialogwidget;
 }
