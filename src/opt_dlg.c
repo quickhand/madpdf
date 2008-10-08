@@ -166,6 +166,16 @@ static void add_labeled_entry(Ewl_Container *container, const char *label_text,
     ewl_widget_show(entry);
 }
 
+static Ewl_Widget *add_named_hbox(Ewl_Container *cont, const char *name)
+{
+    Ewl_Widget *hbox = ewl_hbox_new();
+    ewl_container_child_append(cont, hbox);
+    ewl_theme_data_str_set(hbox, "/hbox/group", "ewl/box/dlg_optionbox");
+    ewl_widget_focusable_set(hbox, 1);
+    ewl_widget_name_set(hbox, name);
+    ewl_widget_show(hbox);
+    return hbox;
+}
 
 void opt_dlg_init()
 {
@@ -183,16 +193,8 @@ void opt_dlg_init()
     ewl_container_child_append(EWL_CONTAINER(dialogwidget),dlg_vbox);
     ewl_widget_show(dlg_vbox);
     
-    Ewl_Widget *dlg_hbox1=ewl_hbox_new();
-    ewl_container_child_append(EWL_CONTAINER(dlg_vbox),dlg_hbox1);
-    //ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox1),"/hbox/file","/usr/share/madpdf/madpdf.edj");
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox1),"/hbox/group","ewl/box/dlg_optionbox");
-    ewl_widget_focusable_set(dlg_hbox1,1);
-    //ewl_widget_appearance_part_text_set(dlg_hbox1,"ewl/box/dlg_optionbox/text","1.");
-    //ewl_object_fill_policy_set(EWL_OBJECT(dlg_hbox1),EWL_FLAG_FILL_HFILL);
-    ewl_widget_name_set(dlg_hbox1,"dlg_p1_hb1");
-    //ewl_widget_disable(dlg_hbox1);
-    ewl_widget_show(dlg_hbox1);
+    Ewl_Widget *dlg_hbox1 = add_named_hbox(EWL_CONTAINER(dlg_vbox),
+		    "dlg_p1_hb1");
     
     add_label(EWL_CONTAINER(dlg_hbox1), "1. Pan Percentage "); 
     
@@ -202,27 +204,16 @@ void opt_dlg_init()
     sprintf(tempo,"%d",get_settings()->vpan);
     add_labeled_entry(EWL_CONTAINER(dlg_hbox1), "V:", tempo, "dlg_p1_hb1_vpan");
     
-    Ewl_Widget *dlg_hbox2=ewl_hbox_new();
-    ewl_container_child_append(EWL_CONTAINER(dlg_vbox),dlg_hbox2);
-    ewl_widget_focusable_set(dlg_hbox2,1);
-    //ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox2),"/hbox/file","/usr/share/madpdf/madpdf.edj");
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox2),"/hbox/group","ewl/box/dlg_optionbox");
-    ewl_widget_name_set(dlg_hbox2,"dlg_p1_hb2");
-    ewl_widget_show(dlg_hbox2);
+    Ewl_Widget *dlg_hbox2 = add_named_hbox(EWL_CONTAINER(dlg_vbox),
+		    "dlg_p1_hb2");
     
     sprintf(tempo,"%d",get_settings()->zoominc);
     add_labeled_entry(EWL_CONTAINER(dlg_hbox2), "2. Zoom Increment (%)  ",
 		    tempo, "dlg_p1_hb2_zoominc");
     
     
-    Ewl_Widget *dlg_hbox3=ewl_hbox_new();
-    ewl_container_child_append(EWL_CONTAINER(dlg_vbox),dlg_hbox3);
-    ewl_widget_focusable_set(dlg_hbox3,1);
-    //ewl_object_custom_h_set(EWL_OBJECT(dlg_hbox3),50);
-    //ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox3),"/hbox/file","/usr/share/madpdf/madpdf.edj");
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_hbox3),"/hbox/group","ewl/box/dlg_optionbox");
-    //ewl_widget_appearance_part_text_set(dlg_hbox3,"ewl/box/dlg_optionbox/text","3.");
-    ewl_widget_name_set(dlg_hbox3,"dlg_p1_hb3");
+    Ewl_Widget *dlg_hbox3 = add_named_hbox(EWL_CONTAINER(dlg_vbox),
+		    "dlg_p1_hb3");
     
     ewl_widget_show(dlg_hbox3);
     
