@@ -29,32 +29,23 @@ static void free_parsinginfo();
 
 void save_settings(const char *filename)
 {
-    char temp[300];
     int filehandle=open(filename, O_WRONLY|O_TRUNC|O_CREAT,
             S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
-    sprintf(temp,"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<settings>\n<panning>\n<horizontal>");
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"%d",settings->hpan);
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"</horizontal>\n<vertical>");
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"%d",settings->vpan);
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"</vertical>\n</panning>\n<zoom>\n<increment>");
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"%d",settings->zoominc);
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"</increment>\n</zoom>\n<trimpadding>\n<left>");
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"%d",settings->ltrimpad);
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"</left>\n<right>");
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"%d",settings->rtrimpad);
-    write(filehandle,temp,strlen(temp));
-    sprintf(temp,"</right>\n</trimpadding>\n</settings>\n");
-    write(filehandle,temp,strlen(temp));
-    close(filehandle);
+    FILE *f = fdopen(filehandle, "w");
+    fputs("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+            "<settings>\n\n<panning>\n", f);
+    fprintf(f, "\t<horizontal>%d</horizontal>\n", settings->hpan);
+    fprintf(f, "\t<vertical>%d</vertical>\n", settings->vpan);
+
+    fputs("</panning>\n\n<zoom>\n", f);
+    fprintf(f, "\t<increment>%d</increment>\n", settings->zoominc);
+
+    fputs("</zoom>\n\n<trimpadding>\n", f);
+    fprintf(f, "\t<left>%d</left>\n", settings->ltrimpad);
+    fprintf(f, "\t<right>%d</right>\n", settings->rtrimpad);
+    fputs("</trimpadding>\n\n</settings>\n", f);
+
+    fclose(f);
 }
 
 progsettings *get_settings()
