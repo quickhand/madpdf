@@ -30,9 +30,8 @@ static void free_parsinginfo();
 void save_settings(const char *filename)
 {
     char temp[300];
-    if(!file_exists(filename))
-        creat(filename,S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
-    int filehandle=open(filename,O_WRONLY|O_TRUNC);
+    int filehandle=open(filename, O_WRONLY|O_TRUNC|O_CREAT,
+            S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH);
     sprintf(temp,"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<settings>\n<panning>\n<horizontal>");
     write(filehandle,temp,strlen(temp));
     sprintf(temp,"%d",settings->hpan);
