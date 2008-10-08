@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include <fcntl.h>
 #include <math.h>
 #include <stdio.h>
@@ -98,14 +100,10 @@ void handleend(void *userData,const XML_Char *name)
 
 void handlechar(void *userData,const XML_Char *s,int len)
 {
-    
-    char *temp2=(char *)calloc(len+1,sizeof(char));
-    
-    strncpy(temp2,s,len);
-    temp2[len]='\0';
-    
     if(len>0)
     {
+        char *temp2 = strndup(s, len);
+
         if(parsinginfo->in_panning_horizontal)
             settings->hpan=(int)strtol(temp2,NULL,10);
         else if(parsinginfo->in_panning_vertical)
@@ -114,8 +112,9 @@ void handlechar(void *userData,const XML_Char *s,int len)
             settings->ltrimpad=(int)strtol(temp2,NULL,10);
         else if(parsinginfo->in_padding_right)
             settings->rtrimpad=(int)strtol(temp2,NULL,10);
+
+        free(temp2);
     }
-    
 }
 
 
