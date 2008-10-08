@@ -6,27 +6,28 @@
 #include "settings.h"
 #include "madpdf.h"
 
-#define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
-
 static Ewl_Widget *dialogwidget=NULL;
 int selectedflag=0;
 
-
-
-void commit_settings()
+static long minl(long a, long b)
 {
-    Ewl_Widget *curwidget;
-    curwidget=ewl_widget_name_find("dlg_p1_hb1_entry1");
-    get_settings()->hpan=(int)MIN(strtol(ewl_text_text_get(EWL_TEXT(curwidget)),NULL,10),100);
-    curwidget=ewl_widget_name_find("dlg_p1_hb1_entry2");
-    get_settings()->vpan=(int)MIN(strtol(ewl_text_text_get(EWL_TEXT(curwidget)),NULL,10),100);
-    curwidget=ewl_widget_name_find("dlg_p1_hb2_entry1");
-    get_settings()->zoominc=(int)strtol(ewl_text_text_get(EWL_TEXT(curwidget)),NULL,10);
-    curwidget=ewl_widget_name_find("dlg_p1_hb3_entry1");
-    get_settings()->ltrimpad=(int)strtol(ewl_text_text_get(EWL_TEXT(curwidget)),NULL,10);
-    curwidget=ewl_widget_name_find("dlg_p1_hb3_entry2");
-    get_settings()->rtrimpad=(int)strtol(ewl_text_text_get(EWL_TEXT(curwidget)),NULL,10);
-    
+   if(a < b) return a;
+   return b;
+}
+
+static long get_widget_val(const char *name)
+{
+    Ewl_Widget *widget = ewl_widget_name_find(name);
+    return strtol(ewl_text_text_get(EWL_TEXT(widget)), NULL, 10);
+}
+
+static void commit_settings()
+{
+    get_settings()->hpan = (int) minl(get_widget_val("dlg_p1_hb1_entry1"), 100);
+    get_settings()->vpan = (int) minl(get_widget_val("dlg_p1_hb1_entry2"), 100);
+    get_settings()->zoominc = (int) get_widget_val("dlg_p1_hb2_entry1");
+    get_settings()->ltrimpad = (int) get_widget_val("dlg_p1_hb3_entry1");
+    get_settings()->rtrimpad = (int) get_widget_val("dlg_p1_hb3_entry2");
 }
 
 Ewl_Widget *opt_dlg_widget_get()
