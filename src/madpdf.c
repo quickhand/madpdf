@@ -306,6 +306,24 @@ void update_statusbar()
     ewl_label_text_set(EWL_LABEL(statlabel2),statlabel2str);
 }
 
+static double clamp(double min, double val, double max)
+{
+    return fmax(min, fmin(val, max));
+}
+
+static void move_hscrollbar(Ewl_Scrollpane *s, double amount)
+{
+    ewl_scrollpane_hscrollbar_value_set(s,
+            clamp(0.0, ewl_scrollpane_hscrollbar_value_get(s) + amount, 1.0));
+    update_statusbar();
+}
+static void move_vscrollbar(Ewl_Scrollpane *s, double amount)
+{
+    ewl_scrollpane_vscrollbar_value_set(s,
+            clamp(0.0, ewl_scrollpane_vscrollbar_value_get(s) + amount, 1.0));
+    update_statusbar();
+}
+
 void cb_key_down(Ewl_Widget *w, void *ev, void *data)
 {
     Ewl_Widget *curwidget;
@@ -346,20 +364,16 @@ void cb_key_down(Ewl_Widget *w, void *ev, void *data)
         //update_statusbar();
         break;*/
     case 1:
-        ewl_scrollpane_hscrollbar_value_set(EWL_SCROLLPANE(scrollpane),fmax(0.0,ewl_scrollpane_hscrollbar_value_get(EWL_SCROLLPANE(scrollpane))-get_horizontal_pan_inc()));
-        update_statusbar();
+        move_hscrollbar(EWL_SCROLLPANE(scrollpane), -get_horizontal_pan_inc());
         break;
     case 2:
-        ewl_scrollpane_hscrollbar_value_set(EWL_SCROLLPANE(scrollpane),fmin(1.0,ewl_scrollpane_hscrollbar_value_get(EWL_SCROLLPANE(scrollpane))+get_horizontal_pan_inc()));
-        update_statusbar();
+        move_hscrollbar(EWL_SCROLLPANE(scrollpane), get_horizontal_pan_inc());
         break;
     case 3:
-        ewl_scrollpane_vscrollbar_value_set(EWL_SCROLLPANE(scrollpane),fmin(1.0,ewl_scrollpane_vscrollbar_value_get(EWL_SCROLLPANE(scrollpane))+get_vertical_pan_inc()));
-        update_statusbar();
+        move_vscrollbar(EWL_SCROLLPANE(scrollpane), get_vertical_pan_inc());
         break;    
     case 4:
-        ewl_scrollpane_vscrollbar_value_set(EWL_SCROLLPANE(scrollpane),fmax(0.0,ewl_scrollpane_vscrollbar_value_get(EWL_SCROLLPANE(scrollpane))-get_vertical_pan_inc()));
-        update_statusbar();
+        move_vscrollbar(EWL_SCROLLPANE(scrollpane), -get_vertical_pan_inc());
         break;
     case 5:
         if(fitmode==0)
