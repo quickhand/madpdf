@@ -137,9 +137,7 @@ void cb_dialog_key_down(Ewl_Widget *w, void *ev, void *data)
     }
 }
 
-
-static void add_labeled_entry(Ewl_Container *container, const char *label_text,
-		const char *entry_text, const char *entry_name)
+static void add_label(Ewl_Container *container, const char *label_text)
 {
     Ewl_Widget *label = ewl_label_new();
     ewl_theme_data_str_set(label, "/label/group", "ewl/label/dlg_label");
@@ -147,6 +145,12 @@ static void add_labeled_entry(Ewl_Container *container, const char *label_text,
     ewl_container_child_append(container, label);
     ewl_label_text_set(EWL_LABEL(label), label_text);
     ewl_widget_show(label);
+}
+
+static void add_labeled_entry(Ewl_Container *container, const char *label_text,
+		const char *entry_text, const char *entry_name)
+{
+    add_label(container, label_text);
 
     Ewl_Widget *entry = ewl_entry_new();
     ewl_container_child_append(container, entry);
@@ -190,15 +194,7 @@ void opt_dlg_init()
     //ewl_widget_disable(dlg_hbox1);
     ewl_widget_show(dlg_hbox1);
     
-    Ewl_Widget *dlg_btn_label1=ewl_label_new();
-    //ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label1),"/label/file","/usr/share/madpdf/madpdf.edj");
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label1),"/label/group","ewl/label/dlg_label");
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label1),"/label/textpart","ewl/label/dlg_label/text");
-    ewl_container_child_append(EWL_CONTAINER(dlg_hbox1),dlg_btn_label1);
-    ewl_label_text_set(EWL_LABEL(dlg_btn_label1),"1. Pan Percentage  ");
-    //ewl_object_fill_policy_set(EWL_OBJECT(dlg_btn_label1),EWL_FLAG_FILL_HFILL);
-    ewl_widget_configure(dlg_btn_label1);
-    ewl_widget_show(dlg_btn_label1);
+    add_label(EWL_CONTAINER(dlg_hbox1), "1. Pan Percentage "); 
     
     sprintf(tempo,"%d",get_settings()->hpan);
     add_labeled_entry(EWL_CONTAINER(dlg_hbox1), "H:", tempo, "dlg_p1_hb1_hpan");
@@ -230,13 +226,7 @@ void opt_dlg_init()
     
     ewl_widget_show(dlg_hbox3);
     
-    Ewl_Widget *dlg_btn_label3=ewl_label_new();
-    //ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label3),"/label/file","/usr/share/madpdf/madpdf.edj");
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label3),"/label/group","ewl/label/dlg_label");
-    ewl_theme_data_str_set(EWL_WIDGET(dlg_btn_label3),"/label/textpart","ewl/label/dlg_label/text");
-    ewl_container_child_append(EWL_CONTAINER(dlg_hbox3),dlg_btn_label3);
-    ewl_label_text_set(EWL_LABEL(dlg_btn_label3),"3. Trim Padding (px)  ");
-    ewl_widget_show(dlg_btn_label3);
+    add_label(EWL_CONTAINER(dlg_hbox3), "3. Trim Padding (px)  ");
     
     sprintf(tempo, "%d", get_settings()->ltrimpad);
     add_labeled_entry(EWL_CONTAINER(dlg_hbox3),
