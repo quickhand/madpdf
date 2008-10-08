@@ -23,11 +23,11 @@ static long get_widget_val(const char *name)
 
 static void commit_settings()
 {
-    get_settings()->hpan = (int) minl(get_widget_val("dlg_p1_hb1_entry1"), 100);
-    get_settings()->vpan = (int) minl(get_widget_val("dlg_p1_hb1_entry2"), 100);
-    get_settings()->zoominc = (int) get_widget_val("dlg_p1_hb2_entry1");
-    get_settings()->ltrimpad = (int) get_widget_val("dlg_p1_hb3_entry1");
-    get_settings()->rtrimpad = (int) get_widget_val("dlg_p1_hb3_entry2");
+    get_settings()->hpan = (int) minl(get_widget_val("dlg_p1_hb1_hpan"), 100);
+    get_settings()->vpan = (int) minl(get_widget_val("dlg_p1_hb1_vpan"), 100);
+    get_settings()->zoominc = (int) get_widget_val("dlg_p1_hb2_zoominc");
+    get_settings()->ltrimpad = (int) get_widget_val("dlg_p1_hb3_ltrim");
+    get_settings()->rtrimpad = (int) get_widget_val("dlg_p1_hb3_rtrim");
 }
 
 Ewl_Widget *opt_dlg_widget_get()
@@ -200,7 +200,7 @@ void opt_dlg_init()
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1),"/entry/cursor/group","ewl/dlg_entry/cursor");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry1),"/entry/selection_area/group","ewl/dlg_entry/selection");
     //ewl_object_fill_policy_set(EWL_OBJECT(dlg_entry1),EWL_FLAG_FILL_HSHRINKABLE);
-    ewl_widget_name_set(dlg_entry1,"dlg_p1_hb1_entry1");
+    ewl_widget_name_set(dlg_entry1,"dlg_p1_hb1_hpan");
     ewl_widget_show(dlg_entry1);
     
     Ewl_Widget *dlg_entry2_label=ewl_label_new();
@@ -220,7 +220,7 @@ void opt_dlg_init()
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2),"/entry/group","ewl/dlg_entry");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2),"/entry/cursor/group","ewl/dlg_entry/cursor");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry2),"/entry/selection_area/group","ewl/dlg_entry/selection");
-    ewl_widget_name_set(dlg_entry2,"dlg_p1_hb1_entry2");
+    ewl_widget_name_set(dlg_entry2,"dlg_p1_hb1_vpan");
     ewl_widget_show(dlg_entry2);
     
     Ewl_Widget *dlg_hbox2=ewl_hbox_new();
@@ -247,7 +247,7 @@ void opt_dlg_init()
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry3),"/entry/group","ewl/dlg_entry");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry3),"/entry/cursor/group","ewl/dlg_entry/cursor");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry3),"/entry/selection_area/group","ewl/dlg_entry/selection");
-    ewl_widget_name_set(dlg_entry3,"dlg_p1_hb2_entry1");
+    ewl_widget_name_set(dlg_entry3,"dlg_p1_hb2_zoominc");
     ewl_widget_show(dlg_entry3);
     
     
@@ -287,7 +287,7 @@ void opt_dlg_init()
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4),"/entry/group","ewl/dlg_entry");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4),"/entry/cursor/group","ewl/dlg_entry/cursor");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry4),"/entry/selection_area/group","ewl/dlg_entry/selection");
-    ewl_widget_name_set(dlg_entry4,"dlg_p1_hb3_entry1");
+    ewl_widget_name_set(dlg_entry4,"dlg_p1_hb3_ltrim");
     ewl_widget_show(dlg_entry4);
     
     Ewl_Widget *dlg_entry5_label=ewl_label_new();
@@ -307,6 +307,6 @@ void opt_dlg_init()
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5),"/entry/group","ewl/dlg_entry");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5),"/entry/cursor/group","ewl/dlg_entry/cursor");
     ewl_theme_data_str_set(EWL_WIDGET(dlg_entry5),"/entry/selection_area/group","ewl/dlg_entry/selection");
-    ewl_widget_name_set(dlg_entry5,"dlg_p1_hb3_entry2");
+    ewl_widget_name_set(dlg_entry5,"dlg_p1_hb3_rtrim");
     ewl_widget_show(dlg_entry5);
 }
