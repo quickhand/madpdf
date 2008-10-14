@@ -18,6 +18,7 @@
  */
 
 #include "Entry.h"
+#include <stdio.h>
 
 
 //extern void redraw_text();
@@ -34,15 +35,21 @@ static void entry_reveal_cb(Ewl_Widget *w, void *ev, void *data) {
 }
 
 static void entry_realize_cb(Ewl_Widget *w, void *ev, void *data) {
-	Ewl_Widget *win;
-	win = ewl_widget_name_find("mainwindow");
+    Ewl_Widget *win;
+	if(data)
+		win = (Ewl_Widget *)data;
+	else
+		win = ewl_widget_name_find("mainwindow");
 	if(win)
 		ewl_window_keyboard_grab_set(EWL_WINDOW(win), 0);
 }
 
 static void entry_unrealize_cb(Ewl_Widget *w, void *ev, void *data) {
 	Ewl_Widget *win;
-	win = ewl_widget_name_find("mainwindow");
+	if(data)
+		win = (Ewl_Widget *)data;
+	else
+		win = ewl_widget_name_find("mainwindow");
 	if(win)
 		ewl_window_keyboard_grab_set(EWL_WINDOW(win), 1);
 }
@@ -106,9 +113,9 @@ Ewl_Widget *init_entry(char *text, int value, entry_handler handler, Ewl_Widget 
 	ewl_window_class_set(EWL_WINDOW(w), "Entry");
 	ewl_widget_name_set(w, "entry_win");
 	ewl_callback_append(w, EWL_CALLBACK_KEY_UP, entry_keyhandler, NULL);
-	ewl_callback_append(w, EWL_CALLBACK_REVEAL, entry_reveal_cb, NULL);
-	ewl_callback_append(w, EWL_CALLBACK_REALIZE, entry_realize_cb, NULL);
-	ewl_callback_append(w, EWL_CALLBACK_UNREALIZE, entry_unrealize_cb, NULL);
+	ewl_callback_append(w, EWL_CALLBACK_REVEAL, entry_reveal_cb, (void *)parent);
+	ewl_callback_append(w, EWL_CALLBACK_REALIZE, entry_realize_cb, (void *)parent);
+	ewl_callback_append(w, EWL_CALLBACK_UNREALIZE, entry_unrealize_cb, (void *)parent);
 	ewl_widget_data_set(EWL_WIDGET(w), (void *)"entry_info", (void *)info);
 	ewl_window_keyboard_grab_set(EWL_WINDOW(w), 1);
 	EWL_EMBED(w)->x = 600;

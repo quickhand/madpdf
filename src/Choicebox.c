@@ -25,6 +25,7 @@
 
 
 
+#include <stdio.h>
 #include <Ewl.h>
 #include "Keyhandler.h"
 #include "Choicebox.h"
@@ -69,8 +70,7 @@ static void choicebox_realize_cb(Ewl_Widget *w, void *ev, void *data) {
 		win = (Ewl_Widget *)data;
 	else
 		win = ewl_widget_name_find("mainwindow");
-
-	if(win)
+    if(win)
 		ewl_window_keyboard_grab_set(EWL_WINDOW(win), 0);
 }
 
@@ -80,8 +80,7 @@ static void choicebox_unrealize_cb(Ewl_Widget *w, void *ev, void *data) {
 		win = (Ewl_Widget *)data;
 	else
 		win = ewl_widget_name_find("mainwindow");
-
-	if(win)
+    if(win)
 		ewl_window_keyboard_grab_set(EWL_WINDOW(win), 1);
 }
 

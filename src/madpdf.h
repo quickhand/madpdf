@@ -6,4 +6,5 @@
 #define K_RETURN 11
 int translate_key(Ewl_Event_Key_Down* e);
 int file_exists(const char *filename);
+void update_main_app();
 #endif

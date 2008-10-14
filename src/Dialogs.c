@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301, USA.
  */
-
+#include "madpdf.h"
 #include "Dialogs.h"
 #include "Choicebox.h"
 #include "Entry.h"
@@ -47,6 +47,7 @@ void zoom_inc_handler(int value, Ewl_Widget *parent)
 		update_label(entry_get_parent(parent), 0, o);
 		if(o)
 			free(o);
+        
 	}
 	fini_entry(zoom_inc_entry);
 
@@ -61,6 +62,7 @@ void pan_inc_h_handler(int value, Ewl_Widget *parent)
 		update_label(entry_get_parent(parent), 1, o);
 		if(o)
 			free(o);
+        update_main_app();
 	}
 	fini_entry(pan_inc_h_entry);
 
@@ -75,6 +77,7 @@ void pan_inc_v_handler(int value, Ewl_Widget *parent)
 		update_label(entry_get_parent(parent), 2, o);
 		if(o)
 			free(o);
+        update_main_app();
 	}
 	fini_entry(pan_inc_v_entry);
 
@@ -89,6 +92,7 @@ void pad_trim_l_handler(int value, Ewl_Widget *parent)
 		update_label(entry_get_parent(parent), 3, o);
 		if(o)
 			free(o);
+        update_main_app();
 	}
 	fini_entry(pad_trim_l_entry);
 
@@ -103,6 +107,7 @@ void pad_trim_r_handler(int value, Ewl_Widget *parent)
 		update_label(entry_get_parent(parent), 4, o);
 		if(o)
 			free(o);
+        update_main_app();
 	}
 	fini_entry(pad_trim_r_entry);
 

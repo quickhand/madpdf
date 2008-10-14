@@ -73,6 +73,14 @@ const char* get_theme_file()
     exit(1);
 }
 
+void update_main_app()
+{
+    resize_and_rescale(curscale);
+    update_statusbar();    
+    
+}
+
+
 double get_horizontal_pan_inc()
 {
     double ws=(double)CURRENT_W(scrollpane);
