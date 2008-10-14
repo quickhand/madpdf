@@ -1,8 +1,8 @@
 group
 {
 	name: "ewl/box/dlg_optionbox";
-	min: 500 50;
-	max: 99999 50;
+	min: 400 20;
+	max: 400 20;
 	parts
 	{
 		part
@@ -35,9 +35,67 @@ group
 			}
 
 		}
+	
+		
+
+		
+	}
+	programs
+	{
+		program
+		{
+			name: "select";
+			signal: "select";
+			source: "EWL";
+			action: STATE_SET "selected" 0.0;
+			target: "ewl/box/dlg_optionbox/mainbody";
+
+		}
+		program
+		{
+			name: "unselect";
+			signal: "unselect";
+			source: "EWL";
+			action: STATE_SET "default" 0.0;
+			target: "ewl/box/dlg_optionbox/mainbody";
+
+		}
+	}
+}
+
+group
+{
+	name: "ewl/label/dlg_optionlabel";
+	min: 250 18;
+	max: 250 18;
+	parts
+	{
 		part
 		{
-			name: "ewl/box/dlg_optionbox/text";
+			name: "ewl/label/dlg_optionlabel/mainbody";
+			type: RECT;
+			description
+			{
+				state: "default" 0.0;
+				color: 0 0 0 0;
+				
+				rel1
+				{
+					relative: 0.0 0.0;
+					offset: 0 0;
+				}
+				rel2
+				{
+					relative: 1.0 1.0;
+					offset: 0 0;
+				}
+
+			}
+
+		}
+		part
+		{
+			name: "ewl/label/dlg_optionlabel/text";
 			type: TEXT;
 			effect: SOFT_SHADOW;
 			description
@@ -51,8 +109,8 @@ group
 				}
 				rel2
 				{
-					relative: 0.0 1.0;
-					offset: 20 0;
+					relative: 1.0 1.0;
+					offset: 0 0;
 				}
 				text
 				{
@@ -81,22 +139,19 @@ group
 	{
 		program
 		{
-			name: "enable";
-			signal: "enabled";
+			name: "select";
+			signal: "select";
 			source: "EWL";
 			action: STATE_SET "selected" 0.0;
-			target: "ewl/box/dlg_optionbox/mainbody";
-			target: "ewl/box/dlg_optionbox/text"; 
+			target: "ewl/label/dlg_optionlabel/text"; 
 		}
 		program
 		{
-			name: "disable";
-			signal: "disabled";
+			name: "unselect";
+			signal: "unselect";
 			source: "EWL";
 			action: STATE_SET "default" 0.0;
-			target: "ewl/box/dlg_optionbox/mainbody";
-			target: "ewl/box/dlg_optionbox/text"; 
+			target: "ewl/label/dlg_optionlabel/text"; 
 		}
 	}
 }
-

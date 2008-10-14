@@ -1,5 +1,5 @@
 bin_PROGRAMS = madpdf
-madpdf_SOURCES = madpdf.c settings.c opt_dlg.c
+madpdf_SOURCES = madpdf.c settings.c Choicebox.c Dialogs.c Entry.c Keyhandler.c
 
 # set the include path found by configure
 INCLUDES= @EWL_CFLAGS@ @EPDF_CFLAGS@

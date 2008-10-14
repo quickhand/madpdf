@@ -35,8 +35,9 @@
 #include <Epdf.h>
 #include <ewl_pdf.h>
 #include "madpdf.h"
+#include "Dialogs.h"
 #include "settings.h"
-#include "opt_dlg.h"
+//#include "opt_dlg.h"
 
 Ewl_Widget *win = NULL;
 Ewl_Widget *pdfwidget = NULL;
@@ -420,11 +421,14 @@ void cb_menu_key_down(Ewl_Widget *w, void *ev, void *data)
         ewl_widget_focus_send(goto_entry);
         break;
     case 2:
-        ewl_widget_hide(menu);
+        /*ewl_widget_hide(menu);
         opt_dlg_init();    
         ewl_window_transient_for(EWL_WINDOW(opt_dlg_widget_get()),EWL_WINDOW(win));
         ewl_widget_show(opt_dlg_widget_get());
-        ewl_widget_focus_send(opt_dlg_widget_get());
+        ewl_widget_focus_send(opt_dlg_widget_get());*/
+        ewl_widget_hide(menu);
+        OptionsDialog();
+        
         break;
     case K_ESCAPE:
         ewl_widget_hide(menu);
